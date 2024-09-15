@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone', 20);
             $table->string('subject', 100);
             $table->text('body');
+            $table->string('ip_address', 45);
             $table->timestamps();
         });
     }
