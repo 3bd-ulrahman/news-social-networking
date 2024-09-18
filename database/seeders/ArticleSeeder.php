@@ -18,13 +18,9 @@ class ArticleSeeder extends Seeder
 
         $images = [];
 
-        for ($i=0; $i < 10; $i++) {
-            // array_push(
-            //     $images,
-            //     'storage/'.Storage::disk('public')->putFile('articles', fake()->image())
-            // );
-
+        for ($i=0; $i < 5; $i++) {
             $image = fake()->image();
+
             if (! $image) {
                 continue;
             }
@@ -46,7 +42,7 @@ class ArticleSeeder extends Seeder
                 'title' => fake()->sentence(3),
                 'slug' => fake()->slug(3),
                 'content' => fake()->paragraph(5),
-                'images' => fake()->randomElement($images),
+                'images' => json_encode(fake()->randomElements($images, 2)),
                 'created_at' => fake()->dateTime()
             ]);
         }

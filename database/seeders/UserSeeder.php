@@ -15,11 +15,16 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        Storage::disk('public')->deleteDirectory('articles');
+        Storage::disk('public')->deleteDirectory('users');
 
         $images = [];
 
         for ($i=0; $i < 5; $i++) {
+            $image = fake()->image();
+            if (! $image) {
+                continue;
+            }
+
             array_push(
                 $images,
                 'storage/'.Storage::disk('public')->putFile('users', fake()->image())
@@ -41,7 +46,7 @@ class UserSeeder extends Seeder
 
         $users = [];
 
-        for ($i=0; $i < 1; $i++) {
+        for ($i=0; $i < 10; $i++) {
             array_push($users, [
                 'name' => fake()->name(),
                 'username' => fake()->userName(),
