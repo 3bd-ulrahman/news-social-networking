@@ -33,7 +33,7 @@ class ArticleSeeder extends Seeder
 
         $articles = [];
 
-        for ($i=0; $i < 10; $i++) {
+        for ($i=0; $i < 100; $i++) {
             array_push($articles, [
                 'category_id' => fake()->numberBetween(1, 10),
                 'user_id' => fake()->numberBetween(1, 10),

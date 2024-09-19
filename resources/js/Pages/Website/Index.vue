@@ -1,9 +1,16 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
+import { Link } from '@inertiajs/vue3';
+
+defineOptions({ layout: AppLayout })
+
+const props = defineProps({
+  articles: Object,
+  latestArticles: Object
+});
 </script>
 
 <template>
-  <AppLayout>
     <!-- Top News Start-->
     <section class="top-news">
       <div class="container">
@@ -247,6 +254,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                   </div>
                 </div>
               </div>
+
               <div id="popular" class="container tab-pane fade">
                 <div class="tn-news">
                   <div class="tn-img">
@@ -273,26 +281,11 @@ import AppLayout from '@/Layouts/AppLayout.vue';
                   </div>
                 </div>
               </div>
+
               <div id="latest" class="container tab-pane fade">
-                <div class="tn-news">
+                <div v-for="article in latestArticles" class="tn-news">
                   <div class="tn-img">
-                    <img src="assets/website/img/news-350x223-2.jpg" />
-                  </div>
-                  <div class="tn-title">
-                    <a href="">Lorem ipsum dolor sit amet</a>
-                  </div>
-                </div>
-                <div class="tn-news">
-                  <div class="tn-img">
-                    <img src="assets/website/img/news-350x223-3.jpg" />
-                  </div>
-                  <div class="tn-title">
-                    <a href="">Lorem ipsum dolor sit amet</a>
-                  </div>
-                </div>
-                <div class="tn-news">
-                  <div class="tn-img">
-                    <img src="assets/website/img/news-350x223-4.jpg" />
+                    <img :src="article.images[0]" />
                   </div>
                   <div class="tn-title">
                     <a href="">Lorem ipsum dolor sit amet</a>
@@ -405,81 +398,38 @@ import AppLayout from '@/Layouts/AppLayout.vue';
     <section class="main-news">
       <div class="container">
         <div class="row">
+
           <div class="col-lg-9">
             <div class="row">
-              <div class="col-md-4">
+              <div v-for="article in articles.data" class="col-md-4">
                 <div class="mn-img">
-                  <img src="assets/website/img/news-350x223-1.jpg" />
-                  <div class="mn-title">
-                    <a href="">Lorem ipsum dolor sit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="mn-img">
-                  <img src="assets/website/img/news-350x223-2.jpg" />
-                  <div class="mn-title">
-                    <a href="">Lorem ipsum dolor sit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="mn-img">
-                  <img src="assets/website/img/news-350x223-3.jpg" />
-                  <div class="mn-title">
-                    <a href="">Lorem ipsum dolor sit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="mn-img">
-                  <img src="assets/website/img/news-350x223-4.jpg" />
-                  <div class="mn-title">
-                    <a href="">Lorem ipsum dolor sit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="mn-img">
-                  <img src="assets/website/img/news-350x223-5.jpg" />
-                  <div class="mn-title">
-                    <a href="">Lorem ipsum dolor sit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="mn-img">
-                  <img src="assets/website/img/news-350x223-1.jpg" />
-                  <div class="mn-title">
-                    <a href="">Lorem ipsum dolor sit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="mn-img">
-                  <img src="assets/website/img/news-350x223-2.jpg" />
-                  <div class="mn-title">
-                    <a href="">Lorem ipsum dolor sit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="mn-img">
-                  <img src="assets/website/img/news-350x223-3.jpg" />
-                  <div class="mn-title">
-                    <a href="">Lorem ipsum dolor sit</a>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="mn-img">
-                  <img src="assets/website/img/news-350x223-4.jpg" />
+                  <!-- <img src="assets/website/img/news-350x223-1.jpg" /> -->
+                  <img :src="article.images[0]" />
                   <div class="mn-title">
                     <a href="">Lorem ipsum dolor sit</a>
                   </div>
                 </div>
               </div>
             </div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li
+                  v-for="(page, index) in articles.links"
+                  :key="page.label"
+                  :class="[
+                    page.url === null ? 'disabled' : '',
+                    page.active ? 'active' : ''
+                  ]"
+                  class="page-item"
+                >
+                  <Link class="page-link"
+                    :href="page.url === null ? '#' : page.url"
+                    v-html="page.label"
+                    preserve-scroll
+                  />
+                </li>
+              </ul>
+            </nav>
           </div>
 
           <div class="col-lg-3">
@@ -503,9 +453,9 @@ import AppLayout from '@/Layouts/AppLayout.vue';
               </ul>
             </div>
           </div>
+
         </div>
       </div>
     </section>
     <!-- Main News End-->
-  </AppLayout>
 </template>
