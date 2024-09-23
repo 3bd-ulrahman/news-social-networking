@@ -3,10 +3,16 @@ import "https://code.jquery.com/jquery-3.4.1.min.js";
 import "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js";
 import "../../lib/easing/easing.min.js";
 import "../../lib/slick/slick.min.js";
-import "../main.js";
 
 import Header from "@/Layouts/Website/Header.vue";
 import Footer from "@/Layouts/Website/Footer.vue";
+import { onMounted } from "vue";
+
+onMounted(() => {
+  const script = document.createElement('script');
+  script.src = 'http://localhost:5173/resources/js/main.js';
+  document.head.appendChild(script);
+});
 </script>
 
 <template>

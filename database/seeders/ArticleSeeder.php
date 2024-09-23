@@ -39,11 +39,12 @@ class ArticleSeeder extends Seeder
                 'user_id' => fake()->numberBetween(1, 10),
                 'status' => fake()->randomElement([0, 1]),
                 'is_commentable' => fake()->randomElement([0, 1]),
+                'views_count' => fake()->numberBetween(0, 1000),
                 'title' => fake()->sentence(3),
                 'slug' => fake()->slug(3),
                 'content' => fake()->paragraph(5),
                 'images' => json_encode(fake()->randomElements($images, 2)),
-                'created_at' => fake()->dateTime()
+                'created_at' => fake()->dateTimeBetween('-1 month', 'now'),
             ]);
         }
 

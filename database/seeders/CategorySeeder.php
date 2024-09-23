@@ -17,9 +17,10 @@ class CategorySeeder extends Seeder
         $categories = [];
 
         for ($i=0; $i < 10; $i++) {
+            $name = fake()->sentence(2);
             array_push($categories, [
-                'name' => fake()->title(),
-                'slug' => fake()->slug(3),
+                'name' => $name,
+                'slug' => Str::slug($name),
                 'status' => 1
             ]);
         }

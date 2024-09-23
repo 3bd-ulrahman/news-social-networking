@@ -19,6 +19,7 @@ class Article extends Model
         'user_id',
         'status',
         'is_commentable',
+        'views_count',
         'title',
         'slug',
         'content',

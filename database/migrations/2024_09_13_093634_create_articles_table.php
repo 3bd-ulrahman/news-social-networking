@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->boolean('status')->default(1);
             $table->boolean('is_commentable')->default(1);
+            $table->unsignedInteger('views_count')->default(0);
             $table->string('title');
             $table->string('slug');
             $table->longText('content');
