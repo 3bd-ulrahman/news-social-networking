@@ -20,7 +20,7 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'logo',
-                'value' => 'default'
+                'value' => 'assets/website/img/logo.png'
             ],
             [
                 'key' => 'favicon',
@@ -32,23 +32,35 @@ class SettingSeeder extends Seeder
             ],
             [
                 'key' => 'country',
-                'value' => 'default country'
+                'value' => 'Egypt'
             ],
             [
                 'key' => 'city',
-                'value' => 'default city'
+                'value' => fake()->city()
             ],
             [
                 'key' => 'street',
-                'value' => 'default street'
+                'value' => fake()->streetName()
             ],
             [
                 'key' => 'facebook',
-                'value' => 'default'
+                'value' => 'https://www.facebook.com'
             ],
             [
                 'key' => 'twitter',
-                'value' => 'default'
+                'value' => 'https://twitter.com'
+            ],
+            [
+                'key' => 'linkedin',
+                'value' => 'https://www.linkedin.com'
+            ],
+            [
+                'key' => 'youtube',
+                'value' => 'https://www.youtube.com'
+            ],
+            [
+                'key' => 'instagram',
+                'value' => 'https://www.instagram.com'
             ],
             [
                 'key' => 'phone',

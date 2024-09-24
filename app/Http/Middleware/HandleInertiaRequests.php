@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Cache;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -36,7 +37,18 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            //
+            'settings' => $this->settings()
         ]);
+    }
+
+    private function settings()
+    {
+        $settings = Cache::remember('settings', now()->addHours(12), function () {
+            return \App\Models\Setting::query()->get();
+        });
+
+        return $settings->mapWithKeys(function ($item) {
+            return [$item['key'] => $item['value']];
+        });
     }
 }

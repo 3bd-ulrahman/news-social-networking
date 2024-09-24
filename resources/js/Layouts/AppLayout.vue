@@ -12,6 +12,12 @@ onMounted(() => {
   const script = document.createElement('script');
   script.src = 'http://localhost:5173/resources/js/main.js';
   document.head.appendChild(script);
+
+  document.querySelectorAll('img').forEach((img) => {
+    if (!img.hasAttribute('loading')) {
+      img.loading = "lazy";
+    }
+  });
 });
 </script>
 

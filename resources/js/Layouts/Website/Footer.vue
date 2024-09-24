@@ -1,3 +1,7 @@
+<script setup>
+import { usePage } from '@inertiajs/vue3';
+</script>
+
 <template>
   <!-- Footer Start -->
   <div class="footer">
@@ -7,15 +11,36 @@
           <div class="footer-widget">
             <h3 class="title">Get in Touch</h3>
             <div class="contact-info">
-              <p><i class="fa fa-map-marker"></i>123 News Street, NY, USA</p>
-              <p><i class="fa fa-envelope"></i>info@example.com</p>
-              <p><i class="fa fa-phone"></i>+123-456-7890</p>
+              <p>
+                <i class="fa fa-map-marker"></i>
+                {{ usePage().props.settings.street }},
+                {{ usePage().props.settings.city }},
+                {{ usePage().props.settings.country }}
+              </p>
+              <p>
+                <i class="fa fa-envelope"></i>
+                {{ usePage().props.settings.email }}
+              </p>
+              <p>
+                <i class="fa fa-phone"></i>
+                {{ usePage().props.settings.phone }}
+              </p>
               <div class="social">
-                <a href=""><i class="fab fa-twitter"></i></a>
-                <a href=""><i class="fab fa-facebook-f"></i></a>
-                <a href=""><i class="fab fa-linkedin-in"></i></a>
-                <a href=""><i class="fab fa-instagram"></i></a>
-                <a href=""><i class="fab fa-youtube"></i></a>
+                <a :href="usePage().props.settings.twitter" title="Twitter">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a :href="usePage().props.settings.facebook" title="Facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a :href="usePage().props.settings.linkedin" title="Linkedin">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a :href="usePage().props.settings.instagram" title="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                <a :href="usePage().props.settings.youtube" title="Youtube">
+                  <i class="fab fa-youtube"></i>
+                </a>
               </div>
             </div>
           </div>
