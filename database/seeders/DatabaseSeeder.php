@@ -30,7 +30,8 @@ class DatabaseSeeder extends Seeder
             CommentSeeder::class,
             ContactSeeder::class,
             SettingSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            NewsletterSeeder::class
         ]);
 
         DB::statement("SET foreign_key_checks=1");

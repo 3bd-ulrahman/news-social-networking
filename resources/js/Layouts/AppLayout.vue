@@ -6,7 +6,8 @@ import "../../lib/slick/slick.min.js";
 
 import Header from "@/Layouts/Website/Header.vue";
 import Footer from "@/Layouts/Website/Footer.vue";
-import { onMounted } from "vue";
+import { onMounted, watch } from "vue";
+import { usePage } from "@inertiajs/vue3";
 
 onMounted(() => {
   const script = document.createElement('script');
@@ -18,6 +19,16 @@ onMounted(() => {
       img.loading = "lazy";
     }
   });
+});
+
+watch(() => usePage().props.flash, () => {
+  const flashMessage = Object.entries(usePage().props.flash).find(([key, value]) => value !== null);
+  if (flashMessage) {
+    return Toast.fire({
+      icon: flashMessage[0],
+      title: flashMessage[1]
+    });
+  }
 });
 </script>
 

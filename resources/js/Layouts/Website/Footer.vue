@@ -1,5 +1,28 @@
 <script setup>
-import { usePage } from '@inertiajs/vue3';
+import { useForm, usePage } from '@inertiajs/vue3';
+import { route } from 'vendor/tightenco/ziggy/src/js';
+
+const form = useForm({
+  email: null
+});
+
+const newslettersStore = () => {
+  form.post(route('newsletters.store'), {
+    preserveScroll: true,
+    onSuccess: () => {
+      Toast.fire({
+        icon: 'sucess',
+        title: 'Thank you for subscribing!'
+      });
+    },
+    onError: (errors) => {
+      Toast.fire({
+        icon: 'error',
+        title: form.errors.email
+      });
+    },
+  });
+};
 </script>
 
 <template>
@@ -80,11 +103,13 @@ import { usePage } from '@inertiajs/vue3';
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Vivamus sed porta dui. Class aptent taciti sociosqu
               </p>
-              <form>
+              <form @submit.prevent="newslettersStore()">
                 <input
                   class="form-control"
                   type="email"
-                  placeholder="Your email here" />
+                  placeholder="Your email here"
+                  v-model="form.email"
+                />
                 <button class="btn">Submit</button>
               </form>
             </div>
