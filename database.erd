@@ -4,8 +4,8 @@
   "settings": {
     "width": 2000,
     "height": 2000,
-    "scrollTop": -837.2,
-    "scrollLeft": -678,
+    "scrollTop": -899,
+    "scrollLeft": -103,
     "zoomLevel": 0.9,
     "show": 509,
     "database": 4,
@@ -836,7 +836,7 @@
         "comment": "",
         "dataType": "VARCHAR",
         "default": "",
-        "options": 8,
+        "options": 12,
         "ui": {
           "keys": 0,
           "widthName": 60,
@@ -845,7 +845,7 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1726071223221,
+          "updateAt": 1727815669323,
           "createAt": 1726071218757
         }
       },
@@ -954,18 +954,18 @@
         "tableId": "pnk9_RmvTNY1MSYij4RhC",
         "name": "content",
         "comment": "",
-        "dataType": "VARCHAR",
+        "dataType": "MEDIUMTEXT",
         "default": "",
         "options": 0,
         "ui": {
           "keys": 0,
           "widthName": 60,
           "widthComment": 60,
-          "widthDataType": 60,
+          "widthDataType": 77,
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1726246797238,
+          "updateAt": 1728207847763,
           "createAt": 1726085825233
         }
       },
@@ -1938,7 +1938,7 @@
           "columnIds": [
             "Knt4v2OkyXwi-BMrAMnTx"
           ],
-          "x": 610.6345,
+          "x": 611.6345,
           "y": 1060.2639,
           "direction": 2
         },
@@ -1994,7 +1994,7 @@
           "columnIds": [
             "zxQkUyY033xDU625vGrCa"
           ],
-          "x": 425.6345,
+          "x": 426.1345,
           "y": 1184.2639,
           "direction": 8
         },
@@ -2282,7 +2282,8 @@
       {
         "name": 1726071220218,
         "dataType": 1726071222317,
-        "options(notNull)": 1726071223221
+        "options(notNull)": 1726071223221,
+        "options(unique)": 1727815669322
       }
     ],
     "dSvi33drn19J40PCaoVIs": [
@@ -2359,7 +2360,7 @@
       -1,
       {
         "name": 1726246797237,
-        "dataType": 1726085833769
+        "dataType": 1728207847762
       }
     ],
     "Ff_wqb_ABAQ0TZ9XiuMPk": [

@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Cache;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -38,6 +38,7 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'settings' => $this->settings(),
+            'sharedCategories' => $this->categories(),
             'flash' => [
                 'success' => session('success'),
                 'warning' => session('warning'),
@@ -48,12 +49,19 @@ class HandleInertiaRequests extends Middleware
 
     private function settings()
     {
-        $settings = Cache::remember('settings', now()->addHours(12), function () {
+        $settings = Cache::remember('settings', now()->addDay(), function () {
             return \App\Models\Setting::query()->get();
         });
 
         return $settings->mapWithKeys(function ($item) {
             return [$item['key'] => $item['value']];
+        });
+    }
+
+    private function categories()
+    {
+        return Cache::remember('shared_categories', now()->addDay(), function () {
+            return \App\Models\Category::query()->active()->get();
         });
     }
 }

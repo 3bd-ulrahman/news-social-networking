@@ -1341,14 +1341,12 @@ button.btn:hover {
 }
 
 .comment-input {
-  display: flex;
-  gap: 10px;
   margin-bottom: 20px;
   align-items: center;
 }
 
-.comment-input input {
-  flex: 1;
+.comment-input input,
+.comment-input textarea {
   padding: 12px 15px;
   border: 1px solid #ddd;
   border-radius: 25px;
@@ -1356,12 +1354,14 @@ button.btn:hover {
   transition: border-color 0.3s ease;
 }
 
-.comment-input input:focus {
+.comment-input input:focus,
+.comment-input textarea:focus {
   border-color: #ff6f61;
   outline: none;
 }
 
 .comment-input button {
+  display: block;
   padding: 12px 20px;
   background-color: #ff6f61;
   color: white;

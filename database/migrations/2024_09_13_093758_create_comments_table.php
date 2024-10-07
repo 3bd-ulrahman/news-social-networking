@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('article_id')->constrained('articles')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->text('content');
+            $table->mediumText('content');
             $table->boolean('status')->default(1);
             $table->string('ip_address', 45);
             $table->timestamps();

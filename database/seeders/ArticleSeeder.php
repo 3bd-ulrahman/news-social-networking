@@ -27,22 +27,22 @@ class ArticleSeeder extends Seeder
 
             array_push(
                 $images,
-                'storage/'.Storage::disk('public')->putFile('articles', $image)
+                '/storage/'.Storage::disk('public')->putFile('articles', $image)
             );
         }
 
         $articles = [];
 
-        for ($i=0; $i < 100; $i++) {
+        for ($i=0; $i < 50; $i++) {
             array_push($articles, [
                 'category_id' => fake()->numberBetween(1, 10),
                 'user_id' => fake()->numberBetween(1, 10),
                 'status' => fake()->randomElement([0, 1]),
                 'is_commentable' => fake()->randomElement([0, 1]),
                 'views_count' => fake()->numberBetween(0, 1000),
-                'title' => fake()->sentence(3),
+                'title' => fake()->sentence(5),
                 'slug' => fake()->slug(3),
-                'content' => fake()->paragraph(5),
+                'content' => fake()->paragraph(10),
                 'images' => json_encode(fake()->randomElements($images, 2)),
                 'created_at' => fake()->dateTimeBetween('-1 month', 'now'),
             ]);

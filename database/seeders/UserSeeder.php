@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
 
             array_push(
                 $images,
-                'storage/'.Storage::disk('public')->putFile('users', fake()->image())
+                '/storage/'.Storage::disk('public')->putFile('users', fake()->image())
             );
         }
 

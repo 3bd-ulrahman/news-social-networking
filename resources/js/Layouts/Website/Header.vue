@@ -1,5 +1,6 @@
 <script setup>
-import { usePage } from '@inertiajs/vue3';
+import { Link, usePage } from '@inertiajs/vue3';
+import { route } from 'vendor/tightenco/ziggy/src/js';
 </script>
 
 <template>
@@ -33,7 +34,7 @@ import { usePage } from '@inertiajs/vue3';
         <div class="col-lg-3 col-md-4">
           <div class="b-logo">
             <a href="index.html">
-              <img :src="usePage().props.settings.logo" alt="Logo" />
+              <img :src="'/' + usePage().props.settings.logo" alt="Logo" />
             </a>
           </div>
         </div>
@@ -66,15 +67,21 @@ import { usePage } from '@inertiajs/vue3';
           class="collapse navbar-collapse justify-content-between"
           id="navbarCollapse">
           <div class="navbar-nav mr-auto">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
+            <a :href="route('home')" class="nav-item nav-link active">Home</a>
             <div class="nav-item dropdown">
               <a
                 href="#"
                 class="nav-link dropdown-toggle"
-                data-toggle="dropdown">Dropdown</a>
+                data-toggle="dropdown">Categories</a>
               <div class="dropdown-menu">
-                <a href="#" class="dropdown-item">Sub Item 1</a>
-                <a href="#" class="dropdown-item">Sub Item 2</a>
+                <Link v-for="category in usePage().props.sharedCategories"
+                  :key="category.id"
+                  :href="route('categories.articles.index', category.slug)"
+                  :title="category.name"
+                  class="dropdown-item"
+                >
+                  {{ category.name }}
+                </Link>
               </div>
             </div>
             <a href="single-page.html" class="nav-item nav-link">Single Page</a>

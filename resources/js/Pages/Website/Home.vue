@@ -1,6 +1,7 @@
 <script setup>
 import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link } from '@inertiajs/vue3';
+import { route } from 'vendor/tightenco/ziggy/src/js';
 
 defineOptions({ layout: AppLayout })
 
@@ -12,7 +13,6 @@ const props = defineProps({
   categories: Object,
   readMoreArticles: Object
 });
-
 </script>
 
 <template>
@@ -27,7 +27,9 @@ const props = defineProps({
                 <div class="tn-img">
                   <img :src="article.images[0]" />
                   <div class="tn-title">
-                    <a href="">{{ article.title.substring(0, 30) }}</a>
+                    <a :href="route('articles.show', {article: article.slug})" :title="article.title.substring(0, 30)">
+                      {{ article.title.substring(0, 30) }}
+                    </a>
                   </div>
                 </div>
               </div>

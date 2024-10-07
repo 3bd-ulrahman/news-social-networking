@@ -42,7 +42,7 @@ class HomeController extends Controller
             return Article::query()->select(['id', 'title'])->latest()->take(10)->get();
         });
 
-        return Inertia::render('Website/Index', compact(
+        return Inertia::render('Website/Home', compact(
             'articles',
             'latestArticles',
             'mostViewedArticles',

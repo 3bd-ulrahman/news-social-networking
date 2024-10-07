@@ -19,7 +19,7 @@ return new class extends Migration
             $table->boolean('is_commentable')->default(1);
             $table->unsignedInteger('views_count')->default(0);
             $table->string('title');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->longText('content');
             $table->string('images')->nullable();
             $table->timestamps();
