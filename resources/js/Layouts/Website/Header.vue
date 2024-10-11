@@ -10,8 +10,8 @@ import { route } from 'vendor/tightenco/ziggy/src/js';
       <div class="row">
         <div class="col-md-6">
           <div class="tb-contact">
-            <p><i class="fas fa-envelope"></i>{{ usePage().props.settings.email }}</p>
-            <p><i class="fas fa-phone-alt"></i>{{ usePage().props.settings.phone }}</p>
+            <p><i class="fas fa-envelope"></i>{{ usePage().props.sharedSettings.email }}</p>
+            <p><i class="fas fa-phone-alt"></i>{{ usePage().props.sharedSettings.phone }}</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -19,7 +19,7 @@ import { route } from 'vendor/tightenco/ziggy/src/js';
             <a href="">About</a>
             <a href="">Privacy</a>
             <a href="">Terms</a>
-            <a href="">Contact</a>
+            <a :href="route('contacts.index')">Contact</a>
           </div>
         </div>
       </div>
@@ -34,7 +34,7 @@ import { route } from 'vendor/tightenco/ziggy/src/js';
         <div class="col-lg-3 col-md-4">
           <div class="b-logo">
             <a href="index.html">
-              <img :src="'/' + usePage().props.settings.logo" alt="Logo" />
+              <img :src="'/' + usePage().props.sharedSettings.logo" alt="Logo" />
             </a>
           </div>
         </div>
@@ -86,22 +86,22 @@ import { route } from 'vendor/tightenco/ziggy/src/js';
             </div>
             <a href="single-page.html" class="nav-item nav-link">Single Page</a>
             <a href="dashboard.html" class="nav-item nav-link">Dashboard</a>
-            <a href="contact.html" class="nav-item nav-link">Contact Us</a>
+            <a :href="route('contacts.index')" class="nav-item nav-link">Contact Us</a>
           </div>
           <div class="social ml-auto">
-            <a :href="usePage().props.settings.twitter" title="Twitter">
+            <a :href="usePage().props.sharedSettings.twitter" title="Twitter">
               <i class="fab fa-twitter"></i>
             </a>
-            <a :href="usePage().props.settings.facebook" title="Facebook">
+            <a :href="usePage().props.sharedSettings.facebook" title="Facebook">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a :href="usePage().props.settings.linkedin" title="Linkedin">
+            <a :href="usePage().props.sharedSettings.linkedin" title="Linkedin">
               <i class="fab fa-linkedin-in"></i>
             </a>
-            <a :href="usePage().props.settings.instagram" title="Instagram">
+            <a :href="usePage().props.sharedSettings.instagram" title="Instagram">
               <i class="fab fa-instagram"></i>
             </a>
-            <a :href="usePage().props.settings.youtube" title="Youtube">
+            <a :href="usePage().props.sharedSettings.youtube" title="Youtube">
               <i class="fab fa-youtube"></i>
             </a>
           </div>

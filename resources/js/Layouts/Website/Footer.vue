@@ -36,32 +36,32 @@ const newslettersStore = () => {
             <div class="contact-info">
               <p>
                 <i class="fa fa-map-marker"></i>
-                {{ usePage().props.settings.street }},
-                {{ usePage().props.settings.city }},
-                {{ usePage().props.settings.country }}
+                {{ usePage().props.sharedSettings.street }},
+                {{ usePage().props.sharedSettings.city }},
+                {{ usePage().props.sharedSettings.country }}
               </p>
               <p>
                 <i class="fa fa-envelope"></i>
-                {{ usePage().props.settings.email }}
+                {{ usePage().props.sharedSettings.email }}
               </p>
               <p>
                 <i class="fa fa-phone"></i>
-                {{ usePage().props.settings.phone }}
+                {{ usePage().props.sharedSettings.phone }}
               </p>
               <div class="social">
-                <a :href="usePage().props.settings.twitter" title="Twitter">
+                <a :href="usePage().props.sharedSettings.twitter" title="Twitter">
                   <i class="fab fa-twitter"></i>
                 </a>
-                <a :href="usePage().props.settings.facebook" title="Facebook">
+                <a :href="usePage().props.sharedSettings.facebook" title="Facebook">
                   <i class="fab fa-facebook-f"></i>
                 </a>
-                <a :href="usePage().props.settings.linkedin" title="Linkedin">
+                <a :href="usePage().props.sharedSettings.linkedin" title="Linkedin">
                   <i class="fab fa-linkedin-in"></i>
                 </a>
-                <a :href="usePage().props.settings.instagram" title="Instagram">
+                <a :href="usePage().props.sharedSettings.instagram" title="Instagram">
                   <i class="fab fa-instagram"></i>
                 </a>
-                <a :href="usePage().props.settings.youtube" title="Youtube">
+                <a :href="usePage().props.sharedSettings.youtube" title="Youtube">
                   <i class="fab fa-youtube"></i>
                 </a>
               </div>

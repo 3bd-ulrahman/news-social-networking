@@ -3,7 +3,7 @@ import AppLayout from '@/Layouts/AppLayout.vue';
 import { Link } from '@inertiajs/vue3';
 import { route } from 'vendor/tightenco/ziggy/src/js';
 
-defineOptions({ layout: AppLayout })
+defineOptions({ layout: AppLayout });
 
 const props = defineProps({
   articles: Object,

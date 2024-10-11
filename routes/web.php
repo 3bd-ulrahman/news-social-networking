@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Website\CategoryArticleController;
 use App\Http\Controllers\Website\HomeController;
 use App\Http\Controllers\Website\NewsletterController;
@@ -16,6 +17,4 @@ Route::resource('articles.comments', ArticleCommentController::class)->scoped([
     'article' => 'id'
 ]);
 
-Route::get('contact-us', function () {
-    return inertia('Website/ContactUs');
-});
+Route::resource('contacts', ContactController::class);

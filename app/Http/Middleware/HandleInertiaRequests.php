@@ -37,7 +37,7 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            'settings' => $this->settings(),
+            'sharedSettings' => $this->settings(),
             'sharedCategories' => $this->categories(),
             'flash' => [
                 'success' => session('success'),
@@ -53,9 +53,13 @@ class HandleInertiaRequests extends Middleware
             return \App\Models\Setting::query()->get();
         });
 
-        return $settings->mapWithKeys(function ($item) {
+        $settings = $settings->mapWithKeys(function ($item) {
             return [$item['key'] => $item['value']];
         });
+
+        $settings['address'] = $settings['street'] . ', ' . $settings['city'] . ', ' . $settings['country'];
+
+        return $settings;
     }
 
     private function categories()
