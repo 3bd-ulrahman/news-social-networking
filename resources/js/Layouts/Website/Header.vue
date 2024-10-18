@@ -1,6 +1,13 @@
 <script setup>
-import { Link, usePage } from '@inertiajs/vue3';
+import { Link, router, usePage } from '@inertiajs/vue3';
 import { route } from 'vendor/tightenco/ziggy/src/js';
+import { ref } from 'vue';
+
+const query = ref('');
+
+const search = () => {
+  router.get('/articles/search', {query: query.value});
+};
 </script>
 
 <template>
@@ -41,8 +48,10 @@ import { route } from 'vendor/tightenco/ziggy/src/js';
         <div class="col-lg-6 col-md-4"></div>
         <div class="col-lg-3 col-md-4">
           <div class="b-search">
-            <input type="text" placeholder="Search" />
-            <button><i class="fa fa-search"></i></button>
+            <form @submit.prevent="search()">
+              <input v-model="query" type="text" placeholder="Search" />
+              <button><i class="fa fa-search"></i></button>
+            </form>
           </div>
         </div>
       </div>
